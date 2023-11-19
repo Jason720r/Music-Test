@@ -20,12 +20,14 @@ int main(void)
     Song song3 = {"Take on Me", "a-ha", "Hunting High and Low", "https://youtu.be/djV11Xbc914?si=cFV5gkRy-mgmJM7k", "image"};
     Song song4 = {"It's Too Late", "Carole King", "Tapestry", "https://youtu.be/VkKxmnrRVHo?si=_BSEni3wU_gfa7t8", "image"};
     Song song5 = {"Slug", "Snail Mail", "Habit", "https://youtu.be/3YkAtR8V558?si=VI-bs6Kb_n6zSYIu", "image"};
+    Song song6 = {"Mimi's Delivery Service", "Good Kid", "Good Kid 3 -EP", "https://youtu.be/hYUvI5Njbbk?si=uHiRVHRdxJ4xHYFW", "image"};
 // Add song to the vector
     songs.push_back(song1);
     songs.push_back(song2);
     songs.push_back(song3); 
     songs.push_back(song4);
     songs.push_back(song5);
+    songs.push_back(song6);
 
 
     for (const auto& song : songs) {
