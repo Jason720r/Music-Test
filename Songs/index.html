@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Music List</title>
+</head>
+<body>
+    <h1>Music List</h1>
+    <ul>
+        {{#songs}}
+        <li>
+            <h2>{{title}}</h2>
+            <p>Artist: {{artist}}</p>
+            <p>Album: {{album}}</p>
+            <p><a href="{{link}}">Link</a></p>
+            <img src="{{image}}" alt="Image">
+        </li>
+        {{/songs}}
+    </ul>
+</body>
+</html>
