@@ -1,5 +1,7 @@
 #include <iostream>
 #include <vector>
+#include "crow_all.h"
+
 // #include "SongLibrary.h" // Include the header file where Song is defined
 
 struct Song {
@@ -11,32 +13,34 @@ struct Song {
 };
 
 
-int main(void)
-{
+
+int main(void) {
+    crow::SimpleApp app;
+
     std::vector<Song> songs;
+    // Populate your songs vector as before
 
-    Song song1 = {"Sweet Cis Teen", "Dazey and the Scouts", "Maggot", "https://youtu.be/ONuWmIqCYdI?si=DgYV7H7iWYQGbvHz", "image"};
-    Song song2 = {"Your Blood", "AURORA", "Single", "https://youtu.be/hUxmu4rKdGU?si=-XGKiUpoq744ddyU", "image"};
-    Song song3 = {"Take on Me", "a-ha", "Hunting High and Low", "https://youtu.be/djV11Xbc914?si=cFV5gkRy-mgmJM7k", "image"};
-    Song song4 = {"It's Too Late", "Carole King", "Tapestry", "https://youtu.be/VkKxmnrRVHo?si=_BSEni3wU_gfa7t8", "image"};
-    Song song5 = {"Slug", "Snail Mail", "Habit", "https://youtu.be/3YkAtR8V558?si=VI-bs6Kb_n6zSYIu", "image"};
-    Song song6 = {"Mimi's Delivery Service", "Good Kid", "Good Kid 3 -EP", "https://youtu.be/hYUvI5Njbbk?si=uHiRVHRdxJ4xHYFW", "image"};
-// Add song to the vector
-    songs.push_back(song1);
-    songs.push_back(song2);
-    songs.push_back(song3); 
-    songs.push_back(song4);
-    songs.push_back(song5);
-    songs.push_back(song6);
+    // Define a route to handle requests to the root URL ("/")
+    CROW_ROUTE(app, "/")
+        .name("index")
+        ([&songs]() {
+            crow::mustache::context context;
+            context["songs"] = crow::mustache::context::list();
+            
+            for (const auto &song : songs) {
+                crow::mustache::context songContext;
+                songContext["title"] = song.title;
+                songContext["artist"] = song.artist;
+                songContext["album"] = song.album;
+                songContext["link"] = song.link;
+                songContext["image"] = song.image;
+                context["songs"].push_back(songContext);
+            }
 
+            std::string rendered = crow::mustache::load("index.html").render(context);
+            return crow::response(rendered);
+        });
 
-    for (const auto& song : songs) {
-        std::cout << "Title: " << song.title << "\n";
-        std::cout << "Artist: " << song.artist << "\n";
-        std::cout << "Album: " << song.album << "\n";
-        std::cout << "Link: " << song.link << "\n";
-        std::cout << "Image: " << song.image << "\n\n";
-    }
-    return 0;
-
+    // Start the web server
+    app.port(8080).run();
 }
