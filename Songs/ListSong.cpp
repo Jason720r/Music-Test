@@ -1,8 +1,6 @@
 #include <iostream>
 #include <vector>
-#include "crow_all.h"
 
-// #include "SongLibrary.h" // Include the header file where Song is defined
 
 struct Song {
     std::string title;
@@ -13,34 +11,23 @@ struct Song {
 };
 
 
-
-int main(void) {
-    crow::SimpleApp app;
-
+int main(void)
+{
     std::vector<Song> songs;
-    // Populate your songs vector as before
 
-    // Define a route to handle requests to the root URL ("/")
-    CROW_ROUTE(app, "/")
-        .name("index")
-        ([&songs]() {
-            crow::mustache::context context;
-            context["songs"] = crow::mustache::context::list();
-            
-            for (const auto &song : songs) {
-                crow::mustache::context songContext;
-                songContext["title"] = song.title;
-                songContext["artist"] = song.artist;
-                songContext["album"] = song.album;
-                songContext["link"] = song.link;
-                songContext["image"] = song.image;
-                context["songs"].push_back(songContext);
-            }
+    Song song1 = {"Sweet Cis Teen", "Dazey and the Scouts", "Maggot", "https://youtu.be/ONuWmIqCYdI?si=DgYV7H7iWYQGbvHz", "image"};
+    Song song2 = {"Your Blood", "Aurora", "Single", "https://youtu.be/YhZdE177qr8?si=ViaZTk1UoU8DMEcc", "image"};
 
-            std::string rendered = crow::mustache::load("index.html").render(context);
-            return crow::response(rendered);
-        });
+    songs.push_back(song1); // Add song1 to the vector
+    songs.push_back(song2);
 
-    // Start the web server
-    app.port(8080).run();
+    for (const auto& song : songs) {
+        std::cout << "Title: " << song.title << "\n";
+        std::cout << "Artist: " << song.artist << "\n";
+        std::cout << "Album: " << song.album << "\n";
+        std::cout << "Link: " << song.link << "\n";
+        std::cout << "Image: " << song.image << "\n\n";
+    }
+    return 0;
+    
 }

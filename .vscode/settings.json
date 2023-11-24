@@ -2,5 +2,6 @@
     "cSpell.words": [
         "Dazey"
     ],
-    "cmake.sourceDirectory": "/Users/brotatotomato/workspace/MusicT/Songs/crow"
+    "cmake.sourceDirectory": "/Users/brotatotomato/workspace/MusicT/Songs/crow",
+    "C_Cpp.errorSquiggles": "disabled"
 }
