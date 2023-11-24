@@ -4,16 +4,31 @@
 
 struct Song {
     std::string title;
-    std::string artist;
+    std::string artist_id;
     std::string album;
     std::string link;
     std::string image;
 };
 
 
+
+struct Artist {
+    std:: string id;
+    std::string artist_name;
+    std::string real_name;
+    bool is_band;
+}
+
+
+
+
 int main(void)
 {
     std::vector<Song> songs;
+    std::vector<Artist> artists;
+
+    artists.push_back({"1", "Dazey and the Scouts", "none", true });
+    artists.push_back({"2", "AURORA" "none", false}) 
 
     Song song1 = {"Sweet Cis Teen", "Dazey and the Scouts", "Maggot", "https://youtu.be/ONuWmIqCYdI?si=DgYV7H7iWYQGbvHz", "image"};
     Song song2 = {"Your Blood", "AURORA", "Single", "https://youtu.be/hUxmu4rKdGU?si=-XGKiUpoq744ddyU", "image"};
