@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+using namespace std;
 
 
 struct Song {
@@ -20,13 +21,27 @@ struct Artist {
 };
 
 
-
+// Define a custom operator<< for Artist
+std::ostream& operator<<(std::ostream& os, const Artist& artist) {
+    os << "ID: " << artist.id << "\n";
+    os << "Artist Name: " << artist.artist_name << "\n";
+    os << "Real Name: " << artist.real_name << "\n";
+    os << "Is Band: " << (artist.is_band ? "Yes" : "No") << "\n";
+    return os;
+}
 
 int main(void)
 {
     std::vector<Song> songs;
     std::vector<Artist> artists;
 
+    unsigned int artSize = artists.size();
+
+    for(unsigned int i = 0; i < artSize; i++)
+    {
+        cout << artists[i] << " ";
+    }
+    cout << endl;
     
 
     Artist artist1 = {"1", "Dazey and the Scouts", "none", true };
