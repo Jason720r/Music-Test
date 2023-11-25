@@ -17,7 +17,7 @@ struct Artist {
     std::string artist_name;
     std::string real_name;
     bool is_band;
-}
+};
 
 
 
@@ -27,8 +27,17 @@ int main(void)
     std::vector<Song> songs;
     std::vector<Artist> artists;
 
-    artists.push_back({"1", "Dazey and the Scouts", "none", true });
-    artists.push_back({"2", "AURORA" "none", false}) 
+    
+
+    Artist artist1 = {"1", "Dazey and the Scouts", "none", true };
+    Artist artist2 = {"2", "AURORA", "none", false};
+    Artist artist3 ={"3", "a-ha", "none", true};  
+    Artist artist4 ={"4", "Carole King", "none", true}; 
+
+    artists.push_back(artist1);
+    artists.push_back(artist2);
+    artists.push_back(artist3);
+    artists.push_back(artist4);
 
     Song song1 = {"Sweet Cis Teen", "Dazey and the Scouts", "Maggot", "https://youtu.be/ONuWmIqCYdI?si=DgYV7H7iWYQGbvHz", "image"};
     Song song2 = {"Your Blood", "AURORA", "Single", "https://youtu.be/hUxmu4rKdGU?si=-XGKiUpoq744ddyU", "image"};
@@ -43,7 +52,7 @@ int main(void)
 
     for (const auto& song : songs) {
         std::cout << "Title: " << song.title << "\n";
-        std::cout << "Artist: " << song.artist << "\n";
+        std::cout << "Artist: " << song.artist_id << "\n";
         std::cout << "Album: " << song.album << "\n";
         std::cout << "Link: " << song.link << "\n";
         std::cout << "Image: " << song.image << "\n\n";
