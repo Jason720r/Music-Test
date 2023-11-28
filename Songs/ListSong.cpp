@@ -72,6 +72,11 @@ int main(void)
         std::cout << "Link: " << song.link << "\n";
         std::cout << "Image: " << song.image << "\n\n";
     }
+
+    for (const auto& artist : artists) {
+        std::cout << "Artist: " << artist.artist_name << "\n";
+        std::cout << "Band or no band: " << artist.is_band << "\n";
+    }
     return 0;
 
 }
