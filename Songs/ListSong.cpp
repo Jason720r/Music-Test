@@ -11,6 +11,9 @@ struct Song {
     std::string image;
 };
 
+bool compareSongsByTitle(const Song& song1, const Song& song2) {
+    return song1.title < song2.title;
+}
 
 
 struct Artist {
@@ -68,6 +71,7 @@ int main(void)
     songs.push_back(song5);
     songs.push_back(song6);
 
+    std::sort(songs.begin(), songs.end(), compareSongsByTitle);
 
     for (const auto& song : songs) {
         std::cout << "Title: " << song.title << "\n";
