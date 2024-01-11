@@ -1,6 +1,9 @@
 #include <iostream>
 #include <vector>
 
+//Combine two words
+//ex: word1=abc word2=qra
+//solution=aqbrca
 
 class Solution {
 public:
